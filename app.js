@@ -1,5 +1,4 @@
 import { BounceString } from "./bouncestring.js";
-import { Ball } from "./ball.js";
 
 class App {
   constructor() {
@@ -15,7 +14,6 @@ class App {
 
     window.addEventListener("resize", this.resize.bind(this), false);
     this.resize();
-   
 
     window.addEventListener("pointerdown", this.onDown.bind(this), false);
     window.addEventListener("pointermove", this.onMove.bind(this), false);
@@ -41,14 +39,6 @@ class App {
       },
       "#f03e3e"
     );
-
-    this.balls = [
-      new Ball(this.stageWidth / 2, 0, 30, 5, this.string),
-      // new Ball (this.stageWidth * 2/3, 0, 30, 2, this.string ),
-      // new Ball (this.stageWidth * 1/3, 0, 30, 2, this.string )
-    ]
-    
-
   }
 
   animate(t) {
@@ -57,10 +47,6 @@ class App {
     this.ctx.clearRect(0, 0, this.stageWidth, this.stageHeight);
 
     this.string.animate(this.ctx, this.moveX, this.moveY);
-
-    this.balls.forEach(ball => {
-      ball.animate(this.ctx, this.isDown, this.string);
-    })
   }
 
   onDown(e) {
